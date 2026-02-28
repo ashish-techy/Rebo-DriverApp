@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "Rebo_Driver",
+    "slug": "Rebo_Driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to show pickup and drop routes."
+      }
+    },
+
+    "android": {
+      "package": "com.vaibhav1150.ride_app",
+      "edgeToEdgeEnabled": true,
+
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDL5RWSuOlN6IAdS3eX-Uy28tZu7_siCSQ"
+        }
+      },
+
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+
+    "extra": {
+      "eas": {
+        "projectId": "f6d65c05-9c2f-4f93-9a4e-df7cdf9d28fd"
+      }
+    }
+  }
+}
