@@ -31,9 +31,10 @@ export default function YourOffersScreen({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* RED BANNER */}
         <ImageBackground
-          source={{
-            uri: "https://i.imgur.com/8wKQZ6F.png", // replace with your banner
-          }}
+        source={require("../../assets/images/offer-background.png")}
+          // source={{
+          //   uri: "https://i.imgur.com/8wKQZ6F.png ", // replace with your banner
+          // }}
           style={styles.banner}
           imageStyle={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
         >
@@ -61,7 +62,7 @@ export default function YourOffersScreen({ navigation }) {
             </View>
 
             {/* Incentive Box */}
-            <View style={styles.incentiveBox}>
+            {/* <View style={styles.incentiveBox}>
               <View style={styles.rowBetween}>
                 <Text style={styles.label}>Incentive</Text>
                 <Text style={styles.value}>₹455</Text>
@@ -72,11 +73,33 @@ export default function YourOffersScreen({ navigation }) {
 
               <LockedRow label="Gigs" left="5" right="5" />
               <LockedRow label="Trip" left="10" right="15" />
-            </View>
+            </View> */}
+
+            <View style={styles.incentiveBox}>
+  <View style={styles.rowBetween}>
+    <Text style={styles.label}>Incentive</Text>
+    <Text style={styles.value}>₹455</Text>
+    <Text style={styles.value}>₹655</Text>
+  </View>
+
+  {/* Gigs */}
+  <ProgressLockRow
+    label="Gigs"
+    current={3}     // dynamic value
+    target={5}
+  />
+
+  {/* Trip */}
+  <ProgressLockRow
+    label="Trip"
+    current={10}
+    target={15}
+  />
+</View>
           </View>
 
           {/* Duplicate card example */}
-          <View style={[styles.offerCard, { marginTop: 16 }]}>
+          <View style={[styles.offerCard, { marginTop: 26 }]}>
             <View style={styles.offerTop}>
               <View>
                 <Text style={styles.offerDay}>Saturday</Text>
@@ -97,8 +120,18 @@ export default function YourOffersScreen({ navigation }) {
                 <Text style={styles.value}>₹655</Text>
               </View>
 
-              <Divider />
-              <LockedRow label="Gigs" left="5" right="5" />
+  <ProgressLockRow
+    label="Gigs"
+    current={3}     // dynamic value
+    target={5}
+  />
+
+  {/* Trip */}
+  <ProgressLockRow
+    label="Trip"
+    current={13}
+    target={15}
+  />
             </View>
           </View>
         </View>
@@ -108,21 +141,63 @@ export default function YourOffersScreen({ navigation }) {
 }
 
 /* Reusable Locked Row */
-const LockedRow = ({ label, left, right }) => (
-  <View style={styles.lockRow}>
-    <Text style={styles.lockLabel}>{label}</Text>
+// const LockedRow = ({ label, left, right }) => (
+//   <View style={styles.lockRow}>
+//     <Text style={styles.lockLabel}>{label}</Text>
 
-    <View style={styles.lockBox}>
-      <Ionicons name="lock-closed" size={14} color="#999" />
-      <Text style={styles.lockValue}>{left}</Text>
-    </View>
+//     <View style={styles.lockBox}>
+//       <Ionicons name="lock-closed" size={14} color="#999" />
+//       <Text style={styles.lockValue}>{left}</Text>
+//     </View>
 
-    <View style={styles.lockBox}>
-      <Ionicons name="lock-closed" size={14} color="#999" />
-      <Text style={styles.lockValue}>{right}</Text>
+//     <View style={styles.lockBox}>
+//       <Ionicons name="lock-closed" size={14} color="#999" />
+//       <Text style={styles.lockValue}>{right}</Text>
+//     </View>
+//   </View>
+// );
+
+const ProgressLockRow = ({
+  label,
+  current,
+  target,
+}) => {
+  const progress = Math.min(current / target, 1);
+  const isUnlocked = current >= target;
+
+  return (
+    <View style={{ marginVertical: 12 }}>
+      
+      {/* Progress Line */}
+      <View style={styles.progressWrapper}>
+        <View style={styles.progressBackground} />
+
+        <View
+          style={[
+            styles.progressFill,
+            { width: `${progress * 100}%` },
+          ]}
+        />
+
+        <View style={styles.lockIconWrapper}>
+          <Ionicons
+            name={isUnlocked ? "lock-open" : "lock-closed"}
+            size={18}
+            color={isUnlocked ? "#000" : "#888"}
+          />
+        </View>
+      </View>
+
+      {/* Numbers Row */}
+      <View style={styles.lockRow}>
+        <Text style={styles.lockLabel}>{label}</Text>
+
+        <Text style={styles.lockValue}>{current}</Text>
+        <Text style={styles.lockValue}>{target}</Text>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 const Divider = () => <View style={styles.divider} />;
 
@@ -165,12 +240,12 @@ const styles = StyleSheet.create({
     marginTop: -20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 16,
+    padding: 20,
   },
 
   sectionTitle: {
-    fontSize: 14,
-    fontWeight: "600",
+    fontSize: 16,
+    fontWeight: "700",
     marginBottom: 12,
   },
 
@@ -179,10 +254,11 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: "hidden",
     elevation: 2,
+    marginTop: 20
   },
 
   offerTop: {
-    backgroundColor: "#FF6A00",
+    backgroundColor: "#FF6B00",
     padding: 16,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -190,13 +266,15 @@ const styles = StyleSheet.create({
 
   offerDay: {
     color: "#fff",
-    fontSize: 12,
+    fontSize: 16,
+    fontWeight: 600
   },
 
   offerTitle: {
     color: "#fff",
-    fontSize: 14,
-    fontWeight: "600",
+    fontSize: 16,
+    fontWeight: "700",
+    marginVertical: 8
   },
 
   offerTime: {
@@ -217,13 +295,17 @@ const styles = StyleSheet.create({
   },
 
   incentiveBox: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#DBDBDB",
     padding: 14,
   },
 
   rowBetween: {
     flexDirection: "row",
     justifyContent: "space-between",
+    borderWidth: 1,
+    borderColor: '#8F8F8F',
+    padding: 20,
+    borderRadius: 10
   },
 
   label: {
@@ -233,7 +315,7 @@ const styles = StyleSheet.create({
 
   value: {
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: "700",
   },
 
   divider: {
@@ -263,4 +345,45 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     fontSize: 12,
   },
+  progressWrapper: {
+  height: 20,
+  justifyContent: "center",
+},
+
+progressBackground: {
+  height: 2,
+  backgroundColor: "#CFCFCF",
+  width: "100%",
+  position: "absolute",
+},
+
+progressFill: {
+  height: 2,
+  backgroundColor: "#000",
+  position: "absolute",
+},
+
+lockIconWrapper: {
+  position: "absolute",
+  alignSelf: "center",
+  backgroundColor: "#DBDBDB",
+  paddingHorizontal: 6,
+},
+
+lockRow: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: 6,
+},
+
+lockLabel: {
+  fontSize: 12,
+  color: "#555",
+},
+
+lockValue: {
+  fontSize: 12,
+  fontWeight: "600",
+},
 });

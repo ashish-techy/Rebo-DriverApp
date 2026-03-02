@@ -142,9 +142,28 @@ export default function VehicleVerificationScreen({ navigation, route }) {
   )}
 
   {/* 👁 PREVIEW ICON (Verified / Pending only) */}
-  {doc.status !== "Upload" && (
+  {doc.status !== "Upload" ? (
     <TouchableOpacity
-      style={{ marginLeft: 8 }}
+      style={{ marginLeft: 12 }}
+      onPress={() => {
+        if (doc.type === "PROFILE_PHOTO") {
+          navigation.navigate("UploadProfilePhoto", {
+            documentType: doc.type,
+            previewOnly: true,
+          });
+        } else {
+          navigation.navigate("UploadDocument", {
+            documentType: doc.type,
+            previewOnly: true,
+          });
+        }
+      }}
+    >
+      <Ionicons name="eye-outline" size={18} color="#00BF40" />
+    </TouchableOpacity>
+  ) : (
+    <View
+      style={{ marginLeft: 12 }}
       onPress={() => {
         if (doc.type === "PROFILE_PHOTO") {
           navigation.navigate("UploadProfilePhoto", {
@@ -160,7 +179,7 @@ export default function VehicleVerificationScreen({ navigation, route }) {
       }}
     >
       <Ionicons name="eye-outline" size={18} />
-    </TouchableOpacity>
+    </View>
   )}
 </View>
 
@@ -324,7 +343,7 @@ const styles = StyleSheet.create({
 
   vehicleImage: {
     width: 160,
-    height: 80,
+    height: 70,
     marginBottom: 6,
   },
 

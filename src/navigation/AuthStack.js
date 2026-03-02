@@ -30,7 +30,7 @@ export default function AuthStack() {
       <Stack.Screen name="SignUp" component={SignUpScreen}/>
       <Stack.Screen name="Login" component={LoginScreen}/>
       <Stack.Screen name="Otp" component={OtpScreen}/>
-      <Stack.Screen name="CreateAccount" component={CreateAccountScreen}/>
+      {/* <Stack.Screen name="CreateAccount" component={CreateAccountScreen}/>
        <Stack.Screen
         name="VehicleVerification"
         component={VehicleVerificationScreen}
@@ -91,7 +91,7 @@ export default function AuthStack() {
       <Stack.Screen
   name="YourOffers"
   component={YourOffersScreen}
-/>
+/> */}
       {/* <Stack.Screen name="langauge" component={SelectLangauge}/> */}
     </Stack.Navigator>
   );

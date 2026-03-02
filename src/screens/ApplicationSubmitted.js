@@ -33,7 +33,12 @@ export default function ApplicationSubmitted({ navigation }) {
     <SafeAreaView style={styles.container}>
       {/* LOGO */}
       <Text style={styles.logo}>
-        <Text style={styles.logoOrange}>REBO</Text> PARTNER
+        <Image
+                         source={require("../../assets/Login/Logo2.png")}
+                        style={styles.logoImage}
+                        resizeMode="contain"
+                      />
+        {/* <Text style={styles.logoOrange}>REBO</Text> PARTNER */}
       </Text>
 
       {/* ILLUSTRATION */}
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 20,
     fontSize: 18,
-    fontWeight: "700",
+    // fontWeight: "700",
   },
 
   logoOrange: {
@@ -112,7 +117,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "700",
     textAlign: "center",
     marginBottom: 10,
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
 
   subtitle: {
     fontSize: 13,
-    color: "#666",
+    color: "#8C8C8C",
     textAlign: "center",
     lineHeight: 20,
     paddingHorizontal: 10,
@@ -145,5 +150,9 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 15,
     fontWeight: "600",
+  },
+    logoImage: {
+    width: 120,
+    height: 60,
   },
 });

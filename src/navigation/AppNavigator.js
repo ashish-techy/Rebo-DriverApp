@@ -8,7 +8,9 @@ import RootNavigator from "./RootNavigator";
 export default function AppNavigator() {
   const { isLoggedIn } = useContext(AuthContext);
 
+  console.log("AppNavigator - isLoggedIn:", isLoggedIn);
+
   if (isLoggedIn === null) return null; // Loading state
 
-  return !isLoggedIn ? <RootNavigator  /> : <AuthStack />;
+  return isLoggedIn ? <RootNavigator  /> : <AuthStack />;
 }

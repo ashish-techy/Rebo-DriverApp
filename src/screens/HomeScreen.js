@@ -65,6 +65,8 @@ export default function DriverHomeScreen({ navigation }) {
 
         {/* Online toggle button */}
         <View style={styles.goButtonWrap}>
+          <View style={{ alignItems: "center", backgroundColor: 'white', borderRadius: 30, shadowColor: "#000000", shadowOpacity: 0.5, shadowRadius: 20, elevation: 5 }}>
+
           <TouchableOpacity
             activeOpacity={0.9}
             onPress={() => setIsOnline((p) => !p)}
@@ -77,6 +79,7 @@ export default function DriverHomeScreen({ navigation }) {
               {isOnline ? "Go Offline" : "Go Online"}
             </Text>
           </TouchableOpacity>
+          </View>
         </View>
 
         {/* Bottom tab on map */}
@@ -265,33 +268,56 @@ const styles = StyleSheet.create({
 
   /* MAP AREA */
   mapWrap: {
-    height: 280,
+    // height: 280,
+      flex: 1,
     backgroundColor: "#eee",
     overflow: "hidden",
   },
+mapTopRow: {
+  position: "absolute",
+  top: 12,
+  left: 16,
+  right: 16,
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  backgroundColor: 'white'
+},
 
-  mapTopRow: {
-    position: "absolute",
-    top: 14,
-    left: 14,
-    right: 14,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+circleIcon: {
+  width: 38,
+  height: 38,
+  borderRadius: 19,
+  backgroundColor: "#fff",
+  justifyContent: "center",
+  alignItems: "center",
+  shadowColor: "#000",
+  shadowOpacity: 0.15,
+  shadowRadius: 8,
+  elevation: 6,
+},
+  // mapTopRow: {
+  //   position: "absolute",
+  //   top: 14,
+  //   left: 14,
+  //   right: 14,
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  // },
 
-  circleIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.08,
-    shadowRadius: 10,
-    elevation: 3,
-  },
+  // circleIcon: {
+  //   width: 40,
+  //   height: 40,
+  //   borderRadius: 20,
+  //   backgroundColor: "#fff",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   shadowColor: "#000",
+  //   shadowOpacity: 0.08,
+  //   shadowRadius: 10,
+  //   elevation: 3,
+  // },
   iconText: { fontSize: 16 },
 
   glowCenter: {
@@ -305,69 +331,127 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   glowOuter: {
-    position: "absolute",
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: "rgba(255, 122, 0, 0.20)",
-  },
-  glowInner: {
-    position: "absolute",
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    backgroundColor: "rgba(255, 122, 0, 0.30)",
-  },
-  glowDot: {
-    position: "absolute",
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "#FF7A00",
-  },
+  position: "absolute",
+  width: 120,
+  height: 120,
+  borderRadius: 60,
+  backgroundColor: "rgba(255, 90, 0, 0.18)",
+},
 
+glowInner: {
+  position: "absolute",
+  width: 70,
+  height: 70,
+  borderRadius: 35,
+  backgroundColor: "rgba(255, 90, 0, 0.35)",
+},
+
+glowDot: {
+  width: 14,
+  height: 14,
+  borderRadius: 7,
+  backgroundColor: "#FF3B30",
+  borderWidth: 3,
+  borderColor: "#fff",
+},
   goButtonWrap: {
-    position: "absolute",
-    bottom: 52,
-    left: 0,
-    right: 0,
-    alignItems: "center",
-  },
+  position: "absolute",
+  bottom: 40,
+  left: 0,
+  right: 0,
+  left: 0,
+  right: 0,
+  alignItems: "center",
+  zIndex: 20,
+},
 
-  goButton: {
-    width: 150,
-    height: 42,
-    borderRadius: 22,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.18,
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  goButtonRed: { backgroundColor: "#E60023" },
-  goButtonGreen: { backgroundColor: "#21C15E" },
-  goButtonText: {
-    color: "#fff",
-    fontSize: 15,
-    fontWeight: "700",
-  },
+goButton: {
+  width: 160,
+  height: 48,
+  borderRadius: 30,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowColor: "#000",
+  shadowOpacity: 0.25,
+  shadowRadius: 12,
+  elevation: 8,
+},
+
+goButtonRed: {
+  backgroundColor: "#E60023",
+},
+
+goButtonGreen: {
+  backgroundColor: "#16A34A",
+},
+
+goButtonText: {
+  color: "#fff",
+  fontSize: 16,
+  fontWeight: "700",
+},
+
+  // goButtonWrap: {
+  //   position: "absolute",
+  //   bottom: 52,
+  //   left: 0,
+  //   right: 0,
+  //   alignItems: "center",
+  // },
+
+  // goButton: {
+  //   width: 150,
+  //   height: 42,
+  //   borderRadius: 22,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   shadowColor: "#000",
+  //   shadowOpacity: 0.18,
+  //   shadowRadius: 10,
+  //   elevation: 5,
+  // },
+  // goButtonRed: { backgroundColor: "#E60023" },
+  // goButtonGreen: { backgroundColor: "#21C15E" },
+  // goButtonText: {
+  //   color: "#fff",
+  //   fontSize: 15,
+  //   fontWeight: "700",
+  // },
+
+  // mapBottomBar: {
+  //   position: "absolute",
+  //   bottom: 0,
+  //   left: 0,
+  //   right: 0,
+  //   height: 48,
+  //   backgroundColor: "#fff",
+  //   flexDirection: "row",
+  //   paddingHorizontal: 14,
+  //   alignItems: "center",
+  //   justifyContent: "space-between",
+  //   borderTopWidth: 1,
+  //   borderTopColor: "#F0F0F0",
+  // },
+
 
   mapBottomBar: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 48,
-    backgroundColor: "#fff",
-    flexDirection: "row",
-    paddingHorizontal: 14,
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderTopWidth: 1,
-    borderTopColor: "#F0F0F0",
-  },
-
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  height: 64,
+  backgroundColor: "#fff",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  paddingHorizontal: 30,
+  borderTopLeftRadius: 22,
+  borderTopRightRadius: 22,
+  shadowColor: "#000",
+  shadowOpacity: 0.15,
+  shadowRadius: 12,
+  elevation: 15,
+},
   tabItem: {
     flexDirection: "row",
     alignItems: "center",
@@ -612,337 +696,3 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useRef } from "react";
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-//   TouchableOpacity,
-//   SafeAreaView,
-//   StatusBar,
-// } from "react-native";
-// import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-// import { Feather } from "@expo/vector-icons";
-
-// export default function DriverHomeScreen() {
-//   const mapRef = useRef(null);
-
-//   const initialRegion = {
-//     latitude: 18.5204, // Pune example
-//     longitude: 73.8567,
-//     latitudeDelta: 0.02,
-//     longitudeDelta: 0.02,
-//   };
-
-//   return (
-//     <SafeAreaView style={styles.safe}>
-//       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-
-//       {/* MAP AREA */}
-//       <View style={styles.mapWrapper}>
-//         <MapView
-//           ref={mapRef}
-//           provider={PROVIDER_GOOGLE}
-//           style={StyleSheet.absoluteFillObject}
-//           initialRegion={initialRegion}
-//           showsUserLocation={false}
-//           showsMyLocationButton={false}
-//           toolbarEnabled={false}
-//         />
-
-//         {/* Top Row Icons */}
-//         <View style={styles.topRow}>
-//           <TouchableOpacity style={styles.circleIcon}>
-//             <Text style={styles.iconText}>⚙️</Text>
-//           </TouchableOpacity>
-
-//           <View style={styles.topRightIcons}>
-//             <TouchableOpacity style={styles.circleIcon}>
-//               <Text style={styles.iconText}>🚨</Text>
-//             </TouchableOpacity>
-
-//             <TouchableOpacity style={styles.circleIcon}>
-//               <Text style={styles.iconText}>❓</Text>
-//             </TouchableOpacity>
-
-//             <TouchableOpacity style={styles.profileCircle}>
-//               <Text style={styles.profileText}>👤</Text>
-//             </TouchableOpacity>
-//           </View>
-//         </View>
-
-//         {/* Center Marker Glow */}
-//         <View pointerEvents="none" style={styles.markerGlow} />
-//         <View pointerEvents="none" style={styles.markerDot} />
-//       </View>
-
-//       {/* BOTTOM PANEL */}
-//       <View style={styles.bottomPanel}>
-//         {/* Bottom Tabs */}
-//         <View style={styles.tabsRow}>
-//           <View style={styles.tabItem}>
-//             <Text style={styles.tabIcon}>🚗</Text>
-//             <Text style={styles.tabLabel}>Drive</Text>
-//           </View>
-
-//           <TouchableOpacity style={styles.goOfflineBtn}>
-//             <Text style={styles.goOfflineText}>Go Offline</Text>
-//           </TouchableOpacity>
-
-//           <View style={styles.tabItem}>
-//             <Text style={styles.tabIcon}>💰</Text>
-//             <Text style={styles.tabLabel}>Earnings</Text>
-//           </View>
-//         </View>
-
-//         {/* Pending Documents Card */}
-//         <View style={styles.pendingCard}>
-//           <View style={styles.pendingDot} />
-
-//           <View style={{ flex: 1 }}>
-//             <Text style={styles.pendingTitle}>Documents submission pending</Text>
-//             <Text style={styles.pendingDesc}>
-//               Please complete all below process to setup {"\n"}
-//               your account and start earning
-//             </Text>
-//           </View>
-
-//           <Text style={styles.chevron}>{">"}</Text>
-//         </View>
-
-//         {/* Stats Cards */}
-//         <View style={styles.statsRow}>
-//           <View style={styles.statCard}>
-//             <Text style={styles.statLabel}>Earnings</Text>
-//             <Text style={styles.statValue}>₹1500</Text>
-//           </View>
-
-//           <View style={styles.statCard}>
-//             <Text style={styles.statLabel}>Online</Text>
-//             <Text style={styles.statValue}>3hr30min</Text>
-//           </View>
-
-//           <View style={styles.statCard}>
-//             <Text style={styles.statLabel}>Trip</Text>
-//             <Text style={styles.statValue}>05</Text>
-//           </View>
-//         </View>
-//       </View>
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   safe: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//   },
-
-//   /* MAP AREA */
-//   mapWrapper: {
-//     flex: 1,
-//     backgroundColor: "#f2f2f2",
-//   },
-
-//   /* Top Icon Row */
-//   topRow: {
-//     position: "absolute",
-//     top: 10,
-//     left: 12,
-//     right: 12,
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//   },
-//   topRightIcons: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//     gap: 10,
-//   },
-
-//   circleIcon: {
-//     width: 38,
-//     height: 38,
-//     borderRadius: 999,
-//     backgroundColor: "#fff",
-//     justifyContent: "center",
-//     alignItems: "center",
-//     shadowColor: "#000",
-//     shadowOpacity: 0.1,
-//     shadowRadius: 5,
-//     elevation: 4,
-//   },
-//   iconText: {
-//     fontSize: 16,
-//   },
-
-//   profileCircle: {
-//     width: 38,
-//     height: 38,
-//     borderRadius: 999,
-//     backgroundColor: "#fff",
-//     justifyContent: "center",
-//     alignItems: "center",
-//     shadowColor: "#000",
-//     shadowOpacity: 0.12,
-//     shadowRadius: 6,
-//     elevation: 4,
-//   },
-//   profileText: {
-//     fontSize: 16,
-//   },
-
-//   /* Marker (center) */
-//   markerGlow: {
-//     position: "absolute",
-//     alignSelf: "center",
-//     top: "45%",
-//     width: 60,
-//     height: 60,
-//     borderRadius: 999,
-//     backgroundColor: "rgba(255, 120, 120, 0.25)",
-//   },
-//   markerDot: {
-//     position: "absolute",
-//     alignSelf: "center",
-//     top: "50%",
-//     width: 14,
-//     height: 14,
-//     borderRadius: 999,
-//     backgroundColor: "#ff2d2d",
-//     borderWidth: 2,
-//     borderColor: "#fff",
-//     marginTop: -7,
-//   },
-
-//   /* BOTTOM PANEL */
-//   bottomPanel: {
-//     backgroundColor: "#fff",
-//     paddingTop: 10,
-//     paddingBottom: 14,
-//     paddingHorizontal: 14,
-//     borderTopLeftRadius: 18,
-//     borderTopRightRadius: 18,
-//     shadowColor: "#000",
-//     shadowOpacity: 0.12,
-//     shadowRadius: 10,
-//     elevation: 12,
-//   },
-
-//   /* Tabs + Button Row */
-//   tabsRow: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "space-between",
-//     marginBottom: 12,
-//   },
-//   tabItem: {
-//     width: 70,
-//     alignItems: "center",
-//   },
-//   tabIcon: {
-//     fontSize: 18,
-//     marginBottom: 2,
-//   },
-//   tabLabel: {
-//     fontSize: 12,
-//     color: "#111",
-//   },
-
-//   goOfflineBtn: {
-//     flex: 1,
-//     marginHorizontal: 12,
-//     height: 42,
-//     backgroundColor: "#16a34a",
-//     borderRadius: 22,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     shadowColor: "#000",
-//     shadowOpacity: 0.12,
-//     shadowRadius: 6,
-//     elevation: 5,
-//   },
-//   goOfflineText: {
-//     color: "#fff",
-//     fontSize: 15,
-//     fontWeight: "700",
-//   },
-
-//   /* Pending Card */
-//   pendingCard: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//     backgroundColor: "#fff",
-//     borderRadius: 12,
-//     paddingVertical: 10,
-//     paddingHorizontal: 12,
-//     borderWidth: 1,
-//     borderColor: "#efefef",
-//     marginBottom: 10,
-//   },
-//   pendingDot: {
-//     width: 8,
-//     height: 8,
-//     borderRadius: 99,
-//     backgroundColor: "#ff3b30",
-//     marginRight: 10,
-//     marginTop: -14,
-//   },
-//   pendingTitle: {
-//     fontSize: 13,
-//     fontWeight: "700",
-//     color: "#111",
-//   },
-//   pendingDesc: {
-//     fontSize: 11,
-//     marginTop: 2,
-//     color: "#6b7280",
-//     lineHeight: 15,
-//   },
-//   chevron: {
-//     fontSize: 18,
-//     color: "#9ca3af",
-//     marginLeft: 8,
-//   },
-
-//   /* Stats Row */
-//   statsRow: {
-//     flexDirection: "row",
-//     gap: 10,
-//   },
-//   statCard: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     borderRadius: 12,
-//     paddingVertical: 12,
-//     paddingHorizontal: 12,
-//     borderWidth: 1,
-//     borderColor: "#efefef",
-//   },
-//   statLabel: {
-//     fontSize: 11,
-//     color: "#6b7280",
-//     marginBottom: 6,
-//   },
-//   statValue: {
-//     fontSize: 15,
-//     fontWeight: "800",
-//     color: "#111",
-//   },
-// });

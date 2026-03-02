@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -7,8 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
   Animated,
+  Image,
 } from "react-native";
 import useReq from "../hooks/useReq";
+import { AuthContext } from "../context/AuthContext";
 
 
 const OTP_LENGTH = 6;
@@ -16,6 +18,8 @@ const RESEND_TIME = 15;
 
 export default function OtpScreen({ navigation, route }) {
     const { mobile } = route.params || {};
+  const { login } = useContext(AuthContext);
+
       const { requestData, response, error: apiError, loading } = useReq();
 
   const [otp, setOtp] = useState(Array(OTP_LENGTH).fill(""));
@@ -121,13 +125,33 @@ export default function OtpScreen({ navigation, route }) {
 
     useEffect(() => {
     if (response) {
-      console.log("OTP Verified:", response);
+      const token = response.accessToken || response.data?.accessToken;
+      const refreshToken = response.refreshToken || response.data?.refreshToken;
 
-      navigation.navigate("CreateAccount", {
-        mobile,
-      });
+      if (!token) {
+        showAlert({
+          type: "error",
+          title: "Error",
+          message: "Token not received from server",
+        });
+
+        // Alert.alert("Error", "Token not received from server");
+        return;
+      }
+      login(token, refreshToken, response.isNewUser, response.user);
+      // login(token, refreshToken); // ✅ STORE TOKEN + SET AUTH STATE
     }
   }, [response]);
+
+  //   useEffect(() => {
+  //   if (response) {
+  //     console.log("OTP Verified:", response);
+
+  //     navigation.navigate("CreateAccount", {
+  //       mobile,
+  //     });
+  //   }
+  // }, [response]);
 
     useEffect(() => {
     if (apiError) {
@@ -148,8 +172,13 @@ export default function OtpScreen({ navigation, route }) {
     <SafeAreaView style={styles.container}>
       {/* LOGO */}
       <View style={styles.logoWrap}>
-        <Text style={styles.logoOrange}>REBO</Text>
-        <Text style={styles.logoBlack}>PARTNER</Text>
+                    <Image
+                         source={require("../../assets/Login/Logo2.png")}
+                        style={styles.logoImage}
+                        resizeMode="contain"
+                      />
+        {/* <Text style={styles.logoOrange}>REBO</Text>
+        <Text style={styles.logoBlack}>PARTNER</Text> */}
       </View>
 
       {/* CARD */}
@@ -346,5 +375,9 @@ const styles = StyleSheet.create({
     color: "#e74c3c",
     textAlign: "center",
     marginBottom: 8,
+  },
+    logoImage: {
+    width: 120,
+    height: 60,
   },
 });

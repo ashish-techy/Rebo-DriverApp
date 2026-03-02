@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -11,8 +11,10 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { AuthContext } from "../context/AuthContext";
 
 export default function ProfileScreen({ navigation }) {
+  const { user, setUser, logout } = useContext(AuthContext);
   const [darkTheme, setDarkTheme] = useState(false);
 
   return (
@@ -84,7 +86,7 @@ export default function ProfileScreen({ navigation }) {
         <MenuItem
           icon={<MaterialIcons name="support-agent" size={24} color="black" />}
           title="Help center"
-          onPress={() => navigation?.navigate?.("Help")}
+          onPress={() => navigation?.navigate?.("HelpCenter")}
         />
         <MenuItem
        
@@ -128,7 +130,7 @@ export default function ProfileScreen({ navigation }) {
         <MenuItem icon="notifications-outline" title="Trip alert sound" onPress={() => {}} />
 </View>
         {/* LOGOUT */}
-        <TouchableOpacity style={styles.logoutBtn}>
+        <TouchableOpacity style={styles.logoutBtn}  onPress={logout}>
           <Ionicons name="log-out-outline" size={18} color="#fff" />
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>

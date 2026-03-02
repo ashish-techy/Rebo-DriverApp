@@ -13,15 +13,25 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import useReq from "../hooks/useReq";
+import { LinearGradient } from "expo-linear-gradient";
+import { useAlert } from "../components/GlobalAlert";
 
 export default function SignUpScreen({ navigation }) {
     const [phone, setPhone] = useState("");
+  const { showAlert } = useAlert();
+
 
   const { requestData, response, error, loading } = useReq();
 
     const handleContinue = () => {
     if (!phone || phone.length !== 10) {
-      Alert.alert("Invalid number", "Please enter a valid 10-digit phone number");
+      showAlert({
+        type: "error",
+        title: "Invalid number",
+        message: "Please enter a valid 10-digit phone number",
+      });
+
+      // Alert.alert("Invalid number", "Please enter a valid 10-digit phone number");
       return;
     }
 
@@ -33,7 +43,13 @@ export default function SignUpScreen({ navigation }) {
 
     useEffect(() => {
     if (response) {
-      Alert.alert("Success", response.message || "OTP Sent");
+      showAlert({
+        type: "success",
+        title: "Success",
+        message: response.message || "OTP Sent",
+      });
+
+      // Alert.alert("Success", response.message || "OTP Sent");
 
       navigation.navigate("Otp", {
         mobile: phone,
@@ -75,8 +91,13 @@ export default function SignUpScreen({ navigation }) {
         <View style={styles.container}>
           {/* ===== LOGO ===== */}
           <Text style={styles.logo}>
-            <Text style={{ color: "#FF7A18" }}>REBO</Text>{" "}
-            <Text style={{ color: "#000" }}>PARTNER</Text>
+            <Image
+                         source={require("../../assets/Login/Logo2.png")}
+                        style={styles.logoImage}
+                        resizeMode="contain"
+                      />
+            {/* <Text style={{ color: "#FF7A18" }}>REBO</Text>{" "}
+            <Text style={{ color: "#000" }}>PARTNER</Text> */}
           </Text>
 
           {/* ===== CARD ===== */}
@@ -102,7 +123,7 @@ export default function SignUpScreen({ navigation }) {
             </View>
 
             {/* CONTINUE */}
-            <TouchableOpacity
+            {/* <TouchableOpacity
   style={[
     styles.primaryBtn,
     loading && { opacity: 0.6 },
@@ -113,6 +134,27 @@ export default function SignUpScreen({ navigation }) {
   <Text style={styles.primaryText}>
     {loading ? "Sending OTP..." : "Continue"}
   </Text>
+</TouchableOpacity> */}
+
+<TouchableOpacity
+  onPress={handleContinue}
+  disabled={loading}
+  activeOpacity={0.8}
+  style={{ width: "100%" }}
+>
+ <LinearGradient
+          colors={["#FF862E", "#FF6B00"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }} // left to right like image
+          style={[
+            styles.button,
+            loading && { opacity: 0.6 }
+          ]}
+        >
+          <Text style={styles.text}>
+            {loading ? "Sending OTP..." : "Continue"}
+          </Text>
+        </LinearGradient>
 </TouchableOpacity>
 
 
@@ -190,11 +232,8 @@ const styles = StyleSheet.create({
 
   /* Logo */
   logo: {
-    marginTop: 8,
+    marginTop: 20,
     fontSize: 20,
-    fontWeight: "800",
-    letterSpacing: 0.5,
-    flexDirection: "column",
   },
 
   /* Card */
@@ -250,7 +289,7 @@ const styles = StyleSheet.create({
   /* Primary Button */
   primaryBtn: {
     marginTop: 16,
-    backgroundColor: "#FF7A18",
+    // backgroundColor: "#FF7A18",
     borderRadius: 12,
     paddingVertical: 14,
     alignItems: "center",
@@ -318,5 +357,31 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "auto",
     marginBottom: 12,
+  },
+  logoImage: {
+    width: 120,
+    height: 60,
+  },
+   button: {
+    height: 48,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+
+    marginTop: 16,
+
+    // Shadow for iOS
+    shadowColor: "#FF6B00",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+
+    // Elevation for Android
+    elevation: 5,
+  },
+  text: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "600",
   },
 });

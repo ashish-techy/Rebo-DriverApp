@@ -2,6 +2,21 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainTabs from "./MainTabs";
 import SelectLanguageScreen from "../screens/SelectLanguageScreen";
+import CreateAccountScreen from "../screens/CreateAccountScreen";
+import VehicleVerificationScreen from "../screens/VehicleVerificationScreen";
+import UploadProfilePhotoScreen from "../screens/UploadProfilePhotoScreen";
+import UploadDocumentScreen from "../screens/UploadDocumentScreen";
+import ApplicationPreview from "../screens/ApplicationPreview";
+import ApplicationSubmitted from "../screens/ApplicationSubmitted";
+import ProfileScreen from "../screens/ProfileScreen";
+import EarningsScreen from "../screens/EarningsScreen";
+import EarningsDetailsScreen from "../screens/EarningsDetailsScreen";
+import WithdrawScreen from "../screens/WithdrawScreen";
+import GigHistoryScreen from "../screens/GigHistoryScreen";
+import TripHistoryScreen from "../screens/TripHistoryScreen";
+import TripDetailsScreen from "../screens/TripDetailsScreen";
+import YourOffersScreen from "../screens/OffersScreen";
+import HelpCenterScreen from "../screens/HelpCenterScreen";
 // import RideConfirmationScreen from "../screens/RideConfirmationScreen";
 // import RideBookingScreen from "../screens/RideBookingScreen";
 // import RideDetailsScreen from "../screens/RideDetailsScreen";
@@ -26,14 +41,38 @@ export default function RootNavigator() {
 
       <Stack.Screen name="language" component={SelectLanguageScreen} />
 
+      <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+      <Stack.Screen
+        name="VehicleVerification"
+        component={VehicleVerificationScreen}
+      />
+      <Stack.Screen
+        name="UploadProfilePhoto"
+        component={UploadProfilePhotoScreen}
+      />
+      <Stack.Screen name="UploadDocument" component={UploadDocumentScreen} />
+      <Stack.Screen name="ApplicationPreview" component={ApplicationPreview} />
+      <Stack.Screen
+        name="ApplicationSubmitted"
+        component={ApplicationSubmitted}
+      />
+      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
 
+      <Stack.Screen name="Profile" component={ProfileScreen} />
 
+      <Stack.Screen name="Earnings" component={EarningsScreen} />
+      <Stack.Screen name="EarningDetails" component={EarningsDetailsScreen} />
+      <Stack.Screen name="Balance" component={WithdrawScreen} />
 
+      <Stack.Screen name="GigHistory" component={GigHistoryScreen} />
 
+      <Stack.Screen name="TripHistory" component={TripHistoryScreen} />
 
+      <Stack.Screen name="TripDetails" component={TripDetailsScreen} />
+      <Stack.Screen name="YourOffers" component={YourOffersScreen} />
+      <Stack.Screen name="HelpCenter" component={HelpCenterScreen} />
 
-
-{/* 
+      {/* 
 <Stack.Screen name="RideBooking" component={RideBookingScreen} />
 
       <Stack.Screen
@@ -65,8 +104,6 @@ export default function RootNavigator() {
 <Stack.Screen name="SavedLocations" component={SavedLocationsScreen} />
 <Stack.Screen name="About" component={AboutScreen} />
 <Stack.Screen name="Safeguard" component={SafeguardToolScreen} /> */}
-
     </Stack.Navigator>
   );
 }
-

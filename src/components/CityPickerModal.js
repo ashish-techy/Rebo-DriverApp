@@ -10,38 +10,49 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const STATES = [
-  "Maharashtra",
-  "Andhra Pradesh",
-  "Assam",
-  "Bihar",
-  "Chhattisgarh",
-  "Goa",
-  "Gujarat",
-  "Haryana",
-  "Himachal Pradesh",
-  "Jharkhand",
-  "Karnataka",
+
+const CITIES = [
+  "Mumbai",
   "Pune",
-  "Madhya Pradesh",
-  "Odisha",
+  "Nagpur",
+  "Nashik",
+  "Thane",
+  "Aurangabad",
+  "Solapur",
+  "Amravati",
+  "Kolhapur",
+  "Nanded",
+  "Latur",
+  "Dhule",
+  "Jalgaon",
+  "Akola",
+  "Ahmednagar",
+  "Parbhani",
+  "Satara",
+  "Sangli",
+  "Beed",
+  "Buldhana",
+  "Washim",
+  "Osmanabad",
+  "Jalna",
+  "Hingoli",
 ];
 
-export default function StatePickerModal({ visible, onSelect, onClose }) {
+export default function CityPickerModal({ visible, onSelect, onClose }) {
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.header}>
         <Ionicons name="arrow-back" size={22} onPress={onClose} />
-        <Text style={styles.headerTitle}>Search your state</Text>
+        <Text style={styles.headerTitle}>Search your city</Text>
       </View>
 
       <View style={styles.searchBox}>
         <Ionicons name="search" size={18} />
-        <TextInput placeholder="Search your state" />
+        <TextInput placeholder="Search your city" />
       </View>
 
       <ScrollView>
-        {STATES.map((state) => (
+        {CITIES.map((state) => (
           <TouchableOpacity
             key={state}
             style={styles.item}

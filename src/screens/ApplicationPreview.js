@@ -92,8 +92,8 @@ const Row = ({ label, value, editable, last }) => (
       {editable && (
         <Ionicons
           name="pencil"
-          size={14}
-          color="#19A645"
+          size={20}
+          color="#0B9736"
           style={{ marginLeft: 6 }}
         />
       )}
@@ -146,9 +146,9 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "700",
-    marginBottom: 12,
+    marginBottom: 14,
   },
 
   row: {

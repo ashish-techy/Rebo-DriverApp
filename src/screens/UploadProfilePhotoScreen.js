@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   headerTitle: { fontSize: 16, fontWeight: "600" },
 
   title: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: "700",
     textAlign: "center",
     marginTop: 16,
@@ -236,8 +236,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 240,
-    height: 240,
+    width: 200,
+    height: 200,
     borderRadius: 100,
   },
 

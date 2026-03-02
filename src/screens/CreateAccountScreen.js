@@ -15,6 +15,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Stepper from "../components/Stepper";
 import StatePickerModal from "../components/StatePickerModal";
 import useReq from "../hooks/useReq";
+import CityPickerModal from "../components/CityPickerModal";
 
 export default function CreateAccountScreen({ navigation, route }) {
   const { mobile } = route.params || {};
@@ -114,7 +115,7 @@ useEffect(() => {
           <Input
             value={name}
             onChangeText={setName}
-            placeholder="prasad paralkar"
+            placeholder="Enter your full name"
             error={showError(name)}
           />
           {showError(name) && (
@@ -189,7 +190,32 @@ useEffect(() => {
           )}
 
           {/* TERMS */}
+
           <TouchableOpacity
+  style={styles.checkboxRow}
+  onPress={() => setTerms(!terms)}
+  activeOpacity={0.8}
+>
+  <View
+    style={[
+      styles.checkbox,
+      terms && styles.checkboxChecked,
+      showError(terms) && styles.inputError,
+    ]}
+  >
+    {terms && (
+      <Ionicons name="checkmark" size={12} color="#fff" />
+    )}
+  </View>
+
+  <Text style={styles.checkboxText}>
+    By continuing, I agree to the{" "}
+    <Text style={styles.link}>terms of use</Text> &{" "}
+    <Text style={styles.link}>privacy policy</Text>
+  </Text>
+</TouchableOpacity>
+
+          {/* <TouchableOpacity
             style={styles.checkboxRow}
             onPress={() => setTerms(!terms)}
           >
@@ -205,7 +231,7 @@ useEffect(() => {
               <Text style={styles.link}>terms of use</Text> &{" "}
               <Text style={styles.link}>privacy policy</Text>
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           {/* BUTTON */}
           {/* <TouchableOpacity
@@ -282,16 +308,7 @@ useEffect(() => {
         }}
         onClose={() => setStateModal(false)}
       />
-      <StatePickerModal
-        visible={cityModal}
-        onSelect={(v) => {
-          setCity(v);
-          setCityModal(false);
-        }}
-        onClose={() => setCityModal(false)}
-      />
-
-      {/* <CityPickerModal
+      {/* <StatePickerModal
         visible={cityModal}
         onSelect={(v) => {
           setCity(v);
@@ -299,6 +316,15 @@ useEffect(() => {
         }}
         onClose={() => setCityModal(false)}
       /> */}
+
+      <CityPickerModal
+        visible={cityModal}
+        onSelect={(v) => {
+          setCity(v);
+          setCityModal(false);
+        }}
+        onClose={() => setCityModal(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -415,33 +441,42 @@ const styles = StyleSheet.create({
 
   flag: { marginRight: 8 },
 
-  checkboxRow: {
+ checkboxRow: {
     flexDirection: "row",
     marginTop: 14,
-    alignItems: "flex-start",
+    alignItems: "center",
   },
 
   checkbox: {
     width: 16,
     height: 16,
     borderWidth: 1,
-    borderColor: "#ff7a18",
+    borderColor: "#FF7A18",
+    borderRadius: 3,
     marginRight: 8,
-    marginTop: 2,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
   },
 
   checkboxChecked: {
-    backgroundColor: "#ff7a18",
+    backgroundColor: "#FF7A18",
+    borderColor: "#FF7A18",
   },
 
   checkboxText: {
     fontSize: 12,
+    color: "#333",
     flex: 1,
   },
 
   link: {
-    color: "#ff7a18",
+    color: "#FF7A18",
     fontWeight: "500",
+  },
+
+  inputError: {
+    borderColor: "red",
   },
 
   button: {

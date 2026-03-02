@@ -13,7 +13,12 @@ export default function WelcomeScreen({ navigation }) {
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
         {/* ===== LOGO ===== */}
-        <Text style={styles.logo}>REBO{"\n"}PARTNER</Text>
+        {/* <Text style={styles.logo}>REBO{"\n"}PARTNER</Text> */}
+        <Image
+             source={require("../../assets/Login/Logo1.png")}
+            style={styles.logo}
+            resizeMode="contain"
+          />
 
         {/* ===== HEADLINE ===== */}
         <Text style={styles.title}>
@@ -65,23 +70,23 @@ const styles = StyleSheet.create({
   },
 
   /* Logo */
-  logo: {
-    marginTop: 20,
-    fontSize: 22,
-    fontWeight: "800",
-    color: "#fff",
-    // textAlign: "center",
-    letterSpacing: 1,
-  },
+  // logo: {
+  //   marginTop: 20,
+  //   fontSize: 22,
+  //   fontWeight: "800",
+  //   color: "#fff",
+  //   // textAlign: "center",
+  //   letterSpacing: 1,
+  // },
 
   /* Headline */
   title: {
     marginTop: 40,
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: "700",
     color: "#000",
     // textAlign: "center",
-    lineHeight: 28,
+    lineHeight: 34,
   },
 
   subtitle: {
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
   /* Buttons */
   primaryBtn: {
     marginTop: 28,
-    width: "100%",
+    width: "80%",
     backgroundColor: "#fff",
     borderRadius: 10,
     paddingVertical: 14,
@@ -104,13 +109,13 @@ const styles = StyleSheet.create({
 
   primaryText: {
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: "800",
     color: "#000",
   },
 
   secondaryBtn: {
-    marginTop: 12,
-    width: "100%",
+    marginTop: 22,
+    width: "80%",
     backgroundColor: "#fff",
     borderRadius: 10,
     paddingVertical: 14,
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
 
   secondaryText: {
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: "800",
     color: "#000",
   },
 
@@ -131,7 +136,12 @@ const styles = StyleSheet.create({
   },
 
   illustration: {
-    width: 300,
-    height: 220,
+    width: 337,
+    height: 202,
+  },
+  logo: {
+    width: 150,
+    height: 60,
+    marginTop: 20,
   },
 });
